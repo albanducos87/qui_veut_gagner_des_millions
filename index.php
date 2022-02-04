@@ -15,6 +15,8 @@ if (empty($_COOKIE["isAdmin"])) {
     <link rel="stylesheet" href="css/style.css" />
     <noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
     <link rel="preload" href="./scene.json" as="fetch">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body class="landing is-preload">
 
@@ -22,11 +24,6 @@ if (empty($_COOKIE["isAdmin"])) {
 require_once ('components/main.php');
 ?>
 
-
-<!-- Scripts -->
-<script type="module">
-    import { Application } from './runtime.js'; const app = new Application(); app.load('./scene.json');
-</script>
 <script src="js/jquery.min.js"></script>
 <script src="js/main.js"></script>
 
