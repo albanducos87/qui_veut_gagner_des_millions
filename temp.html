@@ -1,6 +1,5 @@
 <?php
 require_once("bdd/connexion.php");
-require_once("include/autoLoad.inc.php");
 if (empty($_COOKIE["isAdmin"])) {
   $_COOKIE["isAdmin"] = false;
 }
@@ -19,7 +18,7 @@ if (empty($_COOKIE["isAdmin"])) {
 <body class="landing is-preload">
 
 <?php
-require_once ('components/main.php');
+//require_once ('components/main.php');
 ?>
 
 
