@@ -39,6 +39,7 @@
     border-radius: 10px;
     background-color: navy;
     margin: 4px;
+    cursor: pointer;
 }
 
 #valider {

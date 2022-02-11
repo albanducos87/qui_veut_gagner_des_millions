@@ -21,6 +21,7 @@
 }
 
 .indice {
+    cursor: pointer;
     margin: 4px;
     text-align: center;
     border: 1px solid coral;

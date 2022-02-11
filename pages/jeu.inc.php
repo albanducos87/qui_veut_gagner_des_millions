@@ -3,6 +3,12 @@
 
 <div class="game">
 
+    <div class="palier-box">
+    <?php 
+        require_once('./components/palier.php')
+    ?>
+    </div>
+
     <aside>
     <?php 
         require_once('./components/indices.php')
@@ -49,6 +55,14 @@ aside {
     right: 20px;
     top: 20px;
     width: 10%;
+}
+
+.palier-box {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 10%;
+    height: 90%;
 }
 
 </style>
