@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : ven. 28 jan. 2022 à 20:52
+-- Généré le : mar. 01 mars 2022 à 15:12
 -- Version du serveur : 5.7.34
 -- Version de PHP : 7.4.21
 
@@ -41,9 +41,10 @@ CREATE TABLE `niveau` (
 CREATE TABLE `partie` (
   `idPartie` int(11) NOT NULL,
   `idUtilisateur` int(11) DEFAULT NULL,
-  `score` int(11) DEFAULT NULL,
-  `indice5050` int(1) DEFAULT NULL,
-  `indiceQuestion` int(1) DEFAULT NULL
+  `palier` int(11) DEFAULT NULL,
+  `indice5050` int(1) DEFAULT '0',
+  `indiceAppel` int(1) NOT NULL DEFAULT '0',
+  `indiceVote` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -55,9 +56,22 @@ CREATE TABLE `partie` (
 CREATE TABLE `question` (
   `idQuestion` int(11) NOT NULL,
   `question` varchar(200) DEFAULT NULL,
-  `reponse` varchar(50) DEFAULT NULL,
-  `idNiveau` int(11) DEFAULT NULL,
-  `indice` varchar(200) DEFAULT NULL
+  `idNiveau` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponses`
+--
+
+CREATE TABLE `reponses` (
+  `idReponse` int(11) NOT NULL,
+  `idQuestion` int(11) DEFAULT NULL,
+  `fake1` varchar(50) DEFAULT NULL,
+  `fake2` varchar(50) DEFAULT NULL,
+  `fake3` varchar(50) DEFAULT NULL,
+  `reponse` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -75,6 +89,13 @@ CREATE TABLE `utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`idUtilisateur`, `nom`, `prenom`, `mail`, `mdp`) VALUES
+(4, 'DUCOS', 'Alban', 'ducosalb@gmail.com', 'oui');
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -89,7 +110,8 @@ ALTER TABLE `niveau`
 --
 ALTER TABLE `partie`
   ADD PRIMARY KEY (`idPartie`),
-  ADD KEY `idUtilisateur` (`idUtilisateur`);
+  ADD KEY `idUtilisateur` (`idUtilisateur`),
+  ADD KEY `palier` (`palier`);
 
 --
 -- Index pour la table `question`
@@ -97,6 +119,13 @@ ALTER TABLE `partie`
 ALTER TABLE `question`
   ADD PRIMARY KEY (`idQuestion`),
   ADD KEY `idNiveau` (`idNiveau`);
+
+--
+-- Index pour la table `reponses`
+--
+ALTER TABLE `reponses`
+  ADD PRIMARY KEY (`idReponse`),
+  ADD KEY `idQuestion` (`idQuestion`);
 
 --
 -- Index pour la table `utilisateur`
@@ -127,10 +156,16 @@ ALTER TABLE `question`
   MODIFY `idQuestion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `reponses`
+--
+ALTER TABLE `reponses`
+  MODIFY `idReponse` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
@@ -140,13 +175,20 @@ ALTER TABLE `utilisateur`
 -- Contraintes pour la table `partie`
 --
 ALTER TABLE `partie`
-  ADD CONSTRAINT `partie_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`);
+  ADD CONSTRAINT `partie_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`),
+  ADD CONSTRAINT `partie_ibfk_2` FOREIGN KEY (`palier`) REFERENCES `niveau` (`idNiveau`);
 
 --
 -- Contraintes pour la table `question`
 --
 ALTER TABLE `question`
   ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`idNiveau`) REFERENCES `niveau` (`idNiveau`);
+
+--
+-- Contraintes pour la table `reponses`
+--
+ALTER TABLE `reponses`
+  ADD CONSTRAINT `reponses_ibfk_1` FOREIGN KEY (`idQuestion`) REFERENCES `question` (`idQuestion`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
