@@ -21,6 +21,10 @@ switch ($page) {
         break;
     case 4:
         include_once('pages/connexion.inc.php');
+        break;
+    case 5;
+        include_once('pages/admin.inc.php');
+        break;
     default : include_once('pages/accueil.inc.php');
 }
 ?>

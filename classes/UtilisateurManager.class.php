@@ -30,6 +30,7 @@ class UtilisateurManager {
         return count($tabUtilisateurs);
     }
 
+    // faire la fonction de connexion 
 }
 
 ?>

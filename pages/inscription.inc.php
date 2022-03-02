@@ -2,9 +2,10 @@
 
 $pdo = new Mypdo();
 $utilisateurManager = new UtilisateurManager($pdo);
-$retour = 0;
 
-if (empty($_POST["mail"]) || $retour == 0) {
+echo $_POST["mail"];
+
+if (empty($_POST["mail"])) {
 ?>
     <div id="page-wrapper">
         <section id="banner">
@@ -50,13 +51,12 @@ if (empty($_POST["mail"]) || $retour == 0) {
         $errorMail = 1;
     }
 
+    // Set lea variables de SESSION nom de user et idUser
+    // Faire la gestion des erreurs
     if ($errorMail == 1) {
         echo '<script type="text/javascript">console.log("non");</script>';
-    }
-    if ($retour == 0) {
-        echo "Il y a eu un problème au moment de l'inscription";
     } else {
-        header("Location: index.php?page=2");
+        header("Location: index.php?page=1");
         exit();
     }
 }
