@@ -1,6 +1,5 @@
 <?php
 define('ENV', true);
-require_once("bdd/connexion.php");
 require_once("include/autoLoad.inc.php");
 ?>
 
