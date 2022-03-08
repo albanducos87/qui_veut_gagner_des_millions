@@ -31,6 +31,21 @@ class UtilisateurManager {
     }
 
     // faire la fonction de connexion 
+    public function isLoginOk($mail, $mdp){
+        $tabUtilisateurs = array();
+        $req = $this->db->prepare("SELECT idUtilisateur FROM utilisateur WHERE mail = :mail AND mdp = :mdp");
+        $req->bindValue(':mail', $mail);
+        $req->bindValue(':mdp', $mdp);
+        $req->execute();
+
+        while ($utilisateur = $req->fetch(PDO::FETCH_OBJ)) {
+            $id = $utilisateur->idUtilisateur;
+        }
+
+        if(isset($id)){
+            return $id;
+        }
+    }
 }
 
 ?>

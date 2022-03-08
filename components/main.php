@@ -26,6 +26,9 @@ switch ($page) {
         include_once('pages/admin.inc.php');
         break;
     default : include_once('pages/accueil.inc.php');
+    case 6;
+        include_once('pages/accueilUtilisateur.inc.php');
+        break;
 }
 ?>
 </main>

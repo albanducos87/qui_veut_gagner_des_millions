@@ -11,11 +11,11 @@ class Utilisateur {
     public function affecte($donnees) {
         foreach ($donnees as $attribut => $valeur) {
             switch($attribut) {
-                case 'idUtilisateur' : $this->setIdUtilisateur(idUtilisateur); break;
-                case 'nom' : $this->setNom(nom); break;
-                case 'prenom' : $this->setPrenom(prenom); break;
-                case 'mail' : $this->setMail(mail); break;
-                case 'mdp' : $this->setMdp(mdp); break;
+                case 'idUtilisateur' : $this->setIdUtilisateur($valeur); break;
+                case 'nom' : $this->setNom($valeur); break;
+                case 'prenom' : $this->setPrenom($valeur); break;
+                case 'mail' : $this->setMail($valeur); break;
+                case 'mdp' : $this->setMdp($valeur); break;
             }
         }
     }
