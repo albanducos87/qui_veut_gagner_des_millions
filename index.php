@@ -1,6 +1,7 @@
 <?php
 define('ENV', true);
 require_once("include/autoLoad.inc.php");
+session_start();
 ?>
 
 <!DOCTYPE HTML>

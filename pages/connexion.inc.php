@@ -9,7 +9,7 @@ $retour = 0;
         <div class="inner">
             <h2>Connexion</h2>
             <br><br><br>
-            <form action="index.php?page=" method="post">
+            <form action="index.php?page=4" method="post">
                 <div class="form">
                     <div class="input-container mail">
                         <input id="mail" class="input" name="mail" type="email" required/>
@@ -28,6 +28,7 @@ $retour = 0;
                                 if(isset($_POST["mail"]) && isset($_POST["pwd"])){
                                     if($utilisateurManager->isLoginOk($_POST["mail"], $_POST["pwd"])){
                                         $_SESSION["idUtilisateur"] = $utilisateurManager->isLoginOk($_POST["mail"], $_POST["pwd"]);
+                                        header('Location: index.php?page=6');
                                     }else{
                                         echo "Identifiants incorrects";
                                     }

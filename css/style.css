@@ -693,3 +693,57 @@ button.primary,
     background-color: #06b;
 }
 
+.palier-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.palier {
+    width: 100%;
+    text-align: right;
+    cursor: pointer;
+    margin: 4px;
+    text-align: center;
+    border: 1px solid coral;
+    border-radius: 10px;
+    background-color: navy;
+    padding: 2px;
+    color: coral;
+}
+
+.white {
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-reponse {
+    width: 100%;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 45% 45%;
+    margin: 8px;
+    margin-left: 5%;
+}
+
+.reponse {
+    text-align: center;
+    border: 1px solid coral;
+    border-radius: 10px;
+    background-color: navy;
+    margin: 4px;
+    cursor: pointer;
+}
+
+#valider {
+    display: none;
+}

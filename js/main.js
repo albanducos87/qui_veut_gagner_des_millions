@@ -39,4 +39,38 @@
 
     }
 
+    var boutonReponseSelected
+    var idSelected
+
+    var valider = document.getElementById('valider')
+    valider.addEventListener('click', () => {
+        boutonReponseSelected.style.backgroundColor = "green"
+        setTimeout(() => {
+            boutonReponseSelected.style.backgroundColor = "coral"
+        }, 100)
+        setTimeout(() => {
+            boutonReponseSelected.style.backgroundColor = "green"
+        }, 200)
+        setTimeout(() => {
+            boutonReponseSelected.style.backgroundColor = "coral"
+        }, 300)
+        setTimeout(() => {
+            boutonReponseSelected.style.backgroundColor = "green"
+        }, 400)
+    })
+
+    var liste = document.getElementsByClassName('reponse')
+    for(let i = 0; i < liste.length; i++) {
+        liste[i].addEventListener("click", () => {
+            if (boutonReponseSelected) {
+                boutonReponseSelected.style.backgroundColor = "navy"
+            }
+            boutonReponseSelected = liste[i];
+            idSelected = i;
+            boutonReponseSelected.style.backgroundColor = "coral";
+            valider.style.display = "block";
+        })
+    }
+
 })(jQuery);
+

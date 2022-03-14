@@ -1,12 +1,54 @@
+<?php
+$pdo = new Mypdo();
+$partieManager = new PartieManager($pdo);
+$questionManager = new QuestionManager($pdo);
+$reponseManager = new ReponseManager($pdo);
 
+$partieActu = $partieManager->getPartieEnCours($_SESSION['idUtilisateur']);
+$questionActuelle = $questionManager->getQuestionActuelle($partieActu['palier']);
+$_SESSION['reponsesAffichees'] = $reponseManager->getReponses($questionActuelle['idQuestion']);
+
+$placeReponse = rand(1,4);
+
+?>
 <div class="container">
     <div class="container-reponse">
-        <div class="reponse" >A. La Roumanie</div>
-        <div class="reponse">B. La Moldavie</div>
-        <div class="reponse">C. Le Bhoutan</div>
-        <div class="reponse">D. Andorre</div>
+        <?php
+        switch ($placeReponse) {
+            case 1:
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['reponse']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake1']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake2']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake3']."</div>";
+                break;
+
+            case 2:
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake1']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['reponse']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake2']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake3']."</div>";
+
+                break;
+
+            case 3:
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake1']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake2']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['reponse']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake3']."</div>";
+
+                break;
+
+            case 4:
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake1']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake2']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['fake2']."</div>";
+                echo "<div class='reponse'>".$_SESSION['reponsesAffichees']['reponse']."</div>";
+
+                break;
+        }
+        ?>
     </div>
-    
+
     <div id="valider">
         <button>
             Valider
@@ -15,38 +57,6 @@
 
 </div>
 
-<style>
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.container-reponse {
-    width: 100%;
-    bottom: 0;
-    display: grid;
-    grid-template-columns: 45% 45%;
-    margin: 8px;
-    margin-left: 5%;
-}
-
-.reponse {
-    text-align: center;
-    border: 1px solid coral;
-    border-radius: 10px;
-    background-color: navy;
-    margin: 4px;
-    cursor: pointer;
-}
-
-#valider {
-    display: none;
-}
-
-</style>
 
 <script type="text/javascript">
 
@@ -83,6 +93,6 @@
         })
     }
 
-    
+
 
 </script>

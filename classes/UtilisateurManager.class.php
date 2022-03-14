@@ -46,6 +46,12 @@ class UtilisateurManager {
             return $id;
         }
     }
+
+    public function getInformationsUser($idUtilisateur) {
+        $req = $this->db->prepare("SELECT * FROM utilisateur WHERE idUtilisateur = :idUtilisateur");
+        $req->bindValue(':idUtilisateur', $idUtilisateur);
+        return $req->execute();
+    }
 }
 
 ?>

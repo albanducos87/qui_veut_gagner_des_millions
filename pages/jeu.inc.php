@@ -1,23 +1,31 @@
+<?php
+$pdo = new Mypdo();
+$partieManager = new PartieManager($pdo);
+
+if ($_SESSION['enCours'] != 1) {
+    $partieEnCours = $partieManager->initPartie($_SESSION['idUtilisateur']);
+    $_SESSION['enCours'] = 1;
+}
+?>
+
 <canvas id="canvas3d"></canvas>
-
-
 <div class="game">
 
     <div class="palier-box">
-    <?php 
-        require_once('./components/palier.php')
+    <?php
+    require_once('./components/niveau.php')
     ?>
     </div>
 
     <aside>
-    <?php 
+    <?php
         require_once('./components/indices.php')
     ?>
 
     </aside>
 
     <div class="QandA">
-    <?php 
+    <?php
         require_once('./components/question.php');
         require_once('./components/reponses.php');
     ?>
@@ -30,7 +38,7 @@
     import { Application } from './runtime.js'; const app = new Application(); app.load('./scene.json');
 </script>
 
-<style> 
+<style>
 
 .game {
     height: 100%;
@@ -50,7 +58,7 @@
     transform: translateX(-50%);
 }
 
-aside { 
+aside {
     position: absolute;
     right: 20px;
     top: 20px;
