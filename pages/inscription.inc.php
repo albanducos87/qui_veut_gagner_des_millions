@@ -3,8 +3,6 @@
 $pdo = new Mypdo();
 $utilisateurManager = new UtilisateurManager($pdo);
 
-echo $_POST["mail"];
-
 if (empty($_POST["mail"])) {
 ?>
     <div id="page-wrapper">
@@ -36,6 +34,11 @@ if (empty($_POST["mail"])) {
                             <label for="mdp" class="placeholder">Mot de passe</label>
                         </div>
                         <input type="submit" class="submit"/>
+                        <?php
+                            if (isset($_GET['error'])) {
+                                echo "Un utilisateur avec cet adresse mail existe déjà";
+                            }
+                        ?>
                     </div>
                 </form>
             </div>
@@ -45,8 +48,9 @@ if (empty($_POST["mail"])) {
 <?php
 } else {
     $errorMail = 0;
+
     if ($utilisateurManager->isMailOk($_POST["mail"]) == 0) {
-        $retour = $utilisateurManager->inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], $_POST["pwd"]);
+        $retour = $utilisateurManager->inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], hash('sha256', $_POST["pwd"]));
     } else {
         $errorMail = 1;
     }
@@ -54,7 +58,7 @@ if (empty($_POST["mail"])) {
     // Set lea variables de SESSION nom de user et idUser
     // Faire la gestion des erreurs
     if ($errorMail == 1) {
-        echo '<script type="text/javascript">console.log("non");</script>';
+        header("Location: index.php?page=3&error=true");
     } else {
         header("Location: connexion");
         exit();
