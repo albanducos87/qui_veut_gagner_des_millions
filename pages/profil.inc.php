@@ -2,88 +2,74 @@
 
 $pdo = new Mypdo();
 $utilisateurManager = new UtilisateurManager($pdo);
+$profilEnCours = $utilisateurManager->getInformationsUser($_SESSION['idUtilisateur']);
+
+if (isset($_SESSION['idUtilisateur'])) {
 ?>
 <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'voirProfil')" id="defaultOpen">Mon profil</button>
-    <button class="tablinks" onclick="openCity(event, 'modifierProfil')">Modifier mon profil</button>
+    <button class="tablinks tabProfil" onclick="openCity(event, 'voirProfil')" id="defaultOpen">Mon profil</button>
+    <button class="tablinks tabModif" onclick="openCity(event, 'modifierProfil')">Modifier mon profil</button>
 </div>
+<br>
 <div id="voirProfil" class="tabcontent">
-    <div id="page-wrapper">
-        <section id="banner">
-            <div class="inner">
-                <h2>Mon profil</h2>
-                <br><br><br>
-                <form action="index.php?page=3" method="post">
-
-                    <div class="form">
-                        <div class="input-container mail">
-                            <input id="nom" class="input" type="text" name="nom" required/>
-                            <div class="cut"></div>
-                            <label for="nom" class="placeholder">Nom</label>
-                        </div>
-                        <div class="input-container mail">
-                            <input id="prenom" class="input" type="text" name="prenom" required/>
-                            <div class="cut"></div>
-                            <label for="prenom" class="placeholder">Prénom</label>
-                        </div>
-                        <div class="input-container mail">
-                            <input id="mail" class="input" type="email" name="mail" required/>
-                            <div class="cut"></div>
-                            <label for="mail" class="placeholder">Mail</label>
-                        </div>
-                        <div class="input-container mdp">
-                            <input id="mdp" class="input" type="password" name="pwd" required/>
-                            <div class="cut"></div>
-                            <label for="mdp" class="placeholder">Mot de passe</label>
-                        </div>
-                        <input type="submit" class="submit"/>
-                    </div>
-                </form>
-            </div>
-        </section>
+    <h2 align="center">Mon profil</h2>
+    <div class="form">
+        <div class="input-container mail">
+            <input id="nom" class="input" type="text" name="nom" value="<?php echo $profilEnCours['nom'] ?>" disabled/>
+            <div class="cut"></div>
+            <label for="nom" class="placeholder">Nom</label>
+        </div>
+        <div class="input-container mail">
+            <input id="prenom" class="input" type="text" name="prenom" value="<?php echo $profilEnCours['prenom'] ?>" disabled/>
+            <div class="cut"></div>
+            <label for="prenom" class="placeholder">Prénom</label>
+        </div>
+        <div class="input-container mail">
+            <input id="mail" class="input" type="email" name="mail" value="<?php echo $profilEnCours['mail'] ?>" disabled/>
+            <div class="cut"></div>
+            <label for="mail" class="placeholder">Mail</label>
+        </div>
     </div>
+    <p align="center"><a href="index.php?page=6" class="button primary">Retour accueil</a></p>
 </div>
 
 <div id="modifierProfil" class="tabcontent">
-    <div id="page-wrapper">
-        <section id="banner">
-            <div class="inner">
-                <h2>Modifier mon profil</h2>
-                <br><br><br>
-                <form action="index.php?page=3" method="post">
-
-                    <div class="form">
-                        <div class="input-container mail">
-                            <input id="nom" class="input" type="text" name="nom" required/>
-                            <div class="cut"></div>
-                            <label for="nom" class="placeholder">Nom</label>
-                        </div>
-                        <div class="input-container mail">
-                            <input id="prenom" class="input" type="text" name="prenom" required/>
-                            <div class="cut"></div>
-                            <label for="prenom" class="placeholder">Prénom</label>
-                        </div>
-                        <div class="input-container mail">
-                            <input id="mail" class="input" type="email" name="mail" required/>
-                            <div class="cut"></div>
-                            <label for="mail" class="placeholder">Mail</label>
-                        </div>
-                        <div class="input-container mdp">
-                            <input id="mdp" class="input" type="password" name="pwd" required/>
-                            <div class="cut"></div>
-                            <label for="mdp" class="placeholder">Mot de passe</label>
-                        </div>
-                        <input type="submit" class="submit"/>
-                    </div>
-                </form>
+    <h2 align="center">Modifier mon profil</h2>
+    <form action="index.php?page=7" method="post">
+        <div class="form">
+            <div class="input-container mail">
+                <input id="nom" class="input" type="text" name="nom" value="<?php echo $profilEnCours['nom'] ?>" required/>
+                <div class="cut"></div>
+                <label for="nom" class="placeholder">Nom</label>
             </div>
-        </section>
-    </div>
+            <div class="input-container mail">
+                <input id="prenom" class="input" type="text" name="prenom" value="<?php echo $profilEnCours['prenom'] ?>" required/>
+                <div class="cut"></div>
+                <label for="prenom" class="placeholder">Prénom</label>
+            </div>
+            <div class="input-container mail">
+                <input id="mail" class="input" type="email" name="mail" value="<?php echo $profilEnCours['mail'] ?>" required/>
+                <div class="cut"></div>
+                <label for="mail" class="placeholder">Mail</label>
+            </div>
+            <input type="submit" class="submit" name="submit" value="Modifier"/>
+        </div>
+    </form>
+    <p align="center"><a href="index.php?page=6" class="button primary">Retour accueil</a></p>
 </div>
 
-<a href="index.php?page=0" class="button primary">Retour accueil</a>
-
+<?php
+    if (isset($_POST['submit']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mail'])) {
+        $utilisateurManager->modifierProfil($_SESSION['idUtilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail']);
+        header("refresh: url=index.php?page=7");
+        header("refresh: url=index.php?page=7");
+    }
+} else {
+    header('Location: index.php?page=0');
+}
+?>
 <script>
+
     document.getElementById("defaultOpen").click();
 
     function openCity(evt, action) {

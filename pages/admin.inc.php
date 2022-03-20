@@ -56,24 +56,24 @@ if ($_FILES['fichier']) {
 
     <table>
         <thead>
-            <tr>
-                <th>Question</th>
-                <th>Reponse</th>
-                <th>Fake 1</th>
-                <th>Fake 2</th>
-                <th>Fake 3</th>
-            </tr>
+        <tr>
+            <th>Question</th>
+            <th>Reponse</th>
+            <th>Fake 1</th>
+            <th>Fake 2</th>
+            <th>Fake 3</th>
+        </tr>
         </thead>
         <tbody>
-            <?php foreach ($questions as $question) { ?>
-                <tr>
-                    <td><?php echo $question->question; ?></td>
-                    <td><?php echo $question->reponse; ?></td>
-                    <td><?php echo $question->fake1; ?></td>
-                    <td><?php echo $question->fake2; ?></td>
-                    <td><?php echo $question->fake3; ?></td>
-                </tr>
-            <?php }; ?>
+        <?php foreach ($questions as $question) { ?>
+            <tr>
+                <td><?php echo $question->question; ?></td>
+                <td><?php echo $question->reponse; ?></td>
+                <td><?php echo $question->fake1; ?></td>
+                <td><?php echo $question->fake2; ?></td>
+                <td><?php echo $question->fake3; ?></td>
+            </tr>
+        <?php }; ?>
 
         </tbody>
     </table>

@@ -11,19 +11,16 @@ $questionActuelle = $questionManager->getQuestionActuelle($partieActu['palier'])
     echo $questionActuelle['question'];
     ?>
 </span>
-
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/admin.css" />
+<link rel="stylesheet" href="css/quizMin.css" />
+<noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
+<link rel="preload" href="./scene.json" as="fetch">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <style>
 
-    #question {
-        display: block;
-        width: 100%;
-        text-align: center;
-        border: 1px solid coral;
-        border-radius: 10px;
-        background-color: navy;
-        margin: 8px;
-        padding: 6px;
-    }
+
 
 </style>
 

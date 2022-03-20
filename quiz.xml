@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<quiz name="TestQuiz">
+  <questions>
+    <question rank="1">
+      <name>Quand on veut garder la ligne, qu’est-il déconseillé de faire ‘entre les repas’ ?</name>
+      <answerWrong>Gigoter</answerWrong>
+      <answerWrong>Tournicoter</answerWrong>
+      <answerWrong>Tricoter</answerWrong>
+      <answerRight>Grignoter</answerRight>
+    </question>
+    <question rank="2">
+      <name>Au cours d’une partie de cartes, un joueur fait parfois…</name>
+      <answerWrong>Un râteau rouillé</answerWrong>
+      <answerWrong>Un tracteur en panne</answerWrong>
+      <answerWrong>Une sale bêche</answerWrong>
+      <answerRight>Une mauvaise pioche</answerRight>
+    </question>
+    <question rank="3">
+      <name>Quand un pilote d’avion accélère, on dit qu’il…</name>
+      <answerWrong>Sent le gaz</answerWrong>
+      <answerWrong>Met l'eau dans le gaz</answerWrong>
+      <answerWrong>Est dans le gaz</answerWrong>
+      <answerRight>Met les gazs</answerRight>
+    </question>
+    <question rank="4">
+      <name>Un célèbre personnage de chanson enfantine s’appelle…</name>
+      <answerWrong>Le père lustuvu</answerWrong>
+      <answerWrong>le père lustupu</answerWrong>
+      <answerWrong>le père lustulu</answerWrong>
+      <answerRight>le père lustucru</answerRight>
+    </question>
+    <question rank="5">
+      <name>Au football, il est permis de tromper l’adversaire en faisant…</name>
+      <answerWrong>Un canular</answerWrong>
+      <answerWrong>Un attrape-nigaud</answerWrong>
+      <answerWrong>Une farce</answerWrong>
+      <answerRight>Une feinte</answerRight>
+    </question>
+    <question rank="6">
+      <name>Quel est le titre du dessin animé des studios Disney sorti en Janvier 2004</name>
+      <answerWrong>Frères des aigles</answerWrong>
+      <answerWrong>Frère des rennes</answerWrong>
+      <answerWrong>Frère des cygnes</answerWrong>
+      <answerRight>Frère des ours</answerRight>
+    </question>
+    <question rank="7">
+      <name>Dans quel pays la ville d’Anvers est-elle située ?</name>
+      <answerWrong>Les Pays-Bas</answerWrong>
+      <answerWrong>L'Autriche</answerWrong>
+      <answerWrong>La Suisse</answerWrong>
+      <answerRight>La Belgique</answerRight>
+    </question>
+    <question rank="8">
+      <name>Quand un candidat aux élections est donné gagnant dans les sondages, on dit qu’il…</name>
+      <answerWrong>Carracole en tête</answerWrong>
+      <answerWrong>Caracolle en tête</answerWrong>
+      <answerWrong>Caraccole en tête</answerWrong>
+      <answerRight>Caracole en tête</answerRight>
+    </question>
+    <question rank="9">
+      <name>A quel peuple attribue-t-on généralement la découverte de la boussole ?</name>
+      <answerWrong>Les Egyptiens</answerWrong>
+      <answerWrong>Les Incas</answerWrong>
+      <answerWrong>Les Vikings</answerWrong>
+      <answerRight>Les Chinois</answerRight>
+    </question>
+    <question rank="10">
+      <name>Quel grand couturier a dessiné la couverture du 'Petit Larousse illustré 2005'</name>
+      <answerWrong>Yves Saint Laurent</answerWrong>
+      <answerWrong>Karl Lagerfeld</answerWrong>
+      <answerWrong>Jean-Paul Gaultier</answerWrong>
+      <answerRight>Chirstian Lacroix</answerRight>
+    </question>
+    <question rank="11">
+      <name>Qu’est-ce qui est brodé sur l’habit des membres de l’Académie Française ?</name>
+      <answerWrong>Une feuille de chêne</answerWrong>
+      <answerWrong>Une fleur d'oranger</answerWrong>
+      <answerWrong>Une tige de fougère</answerWrong>
+      <answerRight>Une branche d'olivier</answerRight>
+    </question>
+    <question rank="12">
+      <name>Lequel de ces animaux faut-il châtrer avant de le cuire ?</name>
+      <answerWrong>Le calamar</answerWrong>
+      <answerWrong>L'huître</answerWrong>
+      <answerWrong>La truite</answerWrong>
+      <answerRight>L'écrevisse</answerRight>
+    </question>
+    <question rank="13">
+      <name>Quelle est la capitale de Taiwan ?</name>
+      <answerWrong>Formose</answerWrong>
+      <answerWrong>Macao</answerWrong>
+      <answerWrong>Taiwan</answerWrong>
+      <answerRight>Taipei</answerRight>
+    </question>
+    <question rank="14">
+      <name>Dans le dessin animé, les fameux Shadoks pondent des oeufs en…</name>
+      <answerWrong>Bois</answerWrong>
+      <answerWrong>Mousse</answerWrong>
+      <answerWrong>Verre</answerWrong>
+      <answerRight>Fer</answerRight>
+    </question>
+    <question rank="15">
+      <name>En 1908 aux J.O, le marathon se dispute pour la première fois sur 42,195 km entre…</name>
+      <answerWrong>Versailles et Paris</answerWrong>
+      <answerWrong>La Pirée et Athènes</answerWrong>
+      <answerWrong>Pise et Rome</answerWrong>
+      <answerRight>Windsor et Londres</answerRight>
+    </question>
+  </questions>
+</quiz>

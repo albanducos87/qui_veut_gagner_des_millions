@@ -1,0 +1,86 @@
+#ranking {
+    display: inline-block;
+    color: #E8BA25;
+    border-left-style: solid;
+    border-color: white;
+    font-size: 25px;
+    background: linear-gradient(to right, #243797, #152261);
+    padding: 20px;
+    font-weight: bold;
+    width: 25%;
+    float: right
+}
+
+#retour {
+    padding-right: 70px;
+    margin-top: -100px;
+    font-weight: bold;
+    float: right
+}
+
+#logo {
+    width: 300px;
+    margin-left: calc(50% - 150px)
+}
+
+.joker {
+    background: radial-gradient(#1e9785, #243797);
+    border-radius: 10px;
+    padding: 7px;
+}
+
+#main {
+    display: inline-block;
+    width: 75%;
+}
+
+#qanda {
+    width: 100%;
+    padding: 10px;
+}
+
+.element {
+    color: white;
+    background: radial-gradient(#243797, #0B1441);
+    border-radius: 10px;
+    padding: 1px;
+    min-height: 90px;
+    line-height: 90px;
+    font-size: 40px;
+    font-size: 3.0vw;
+    text-align: center;
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    white-space: pre-line;
+}
+
+.right {
+    background: radial-gradient(green, black);
+}
+
+.suggest {
+    background: radial-gradient(#cbc93a, black);
+}
+
+.wrong {
+    background: radial-gradient(red, black);
+}
+
+.marked {
+    background: radial-gradient(purple, black);
+}
+
+#question {
+    width: 100%;
+    background: radial-gradient(#443797, #2B1441);
+    margin-bottom: 20px;
+}
+
+#table {
+    width: 100%;
+}
+
+.goldenLetter {
+    color: #E8BA25;
+}

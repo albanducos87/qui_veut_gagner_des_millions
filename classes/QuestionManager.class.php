@@ -11,6 +11,7 @@ class QuestionManager {
         $liste = array();
         $req = $this->db->prepare("SELECT * FROM question q JOIN reponses r on q.idQuestion = r.idQuestion");
         $req->execute();
+        return $req->fetch();
         while ($res = $req->fetch(PDO::FETCH_OBJ)) {
             $liste[] = new QuestionReponse($res);
         }
@@ -53,6 +54,53 @@ class QuestionManager {
 
         if (isset($questionEnCours))
             return $questionEnCours;
+    }
+
+    public function getQuestionsReponses()
+    {
+        $stmt = $this->db->prepare("SELECT q.idQuestion, question, fake1, fake2, fake3, reponse, idReponse FROM question q INNER JOIN reponses r ON r.idQuestion = q.idQuestion");
+
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+
+    }
+
+    public function generateXml() {
+        $dom = new DOMDocument('1.0', 'utf-8');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+
+        //create the main tags, without values
+        $quiz = $dom->createElement('quiz');
+        $quiz->setAttribute("name","TestQuiz");
+        $questions = $dom->createElement('questions');
+        $quiz->appendChild($questions);
+
+        $questionsReponses = $this->getQuestionsReponses();
+
+        $i = 1;
+        foreach ($questionsReponses as $qr) {
+            $question = $dom->createElement("question");
+            $question->setAttribute('rank', strval($i));
+            $libelle = $dom->createElement('name', $qr['question']);
+            $fake1 = $dom->createElement('answerWrong', $qr['fake1']);
+            $fake2 = $dom->createElement('answerWrong', $qr['fake2']);
+            $fake3 = $dom->createElement('answerWrong', $qr['fake3']);
+            $reponse = $dom->createElement('answerRight', $qr['reponse']);
+
+            $questions->appendChild($question);
+            $question->appendChild($libelle);
+            $question->appendChild($fake1);
+            $question->appendChild($fake2);
+            $question->appendChild($fake3);
+            $question->appendChild($reponse);
+
+            $i++;
+        }
+
+        $dom->appendChild($quiz);
+        $dom->save('quiz.xml');
     }
 
 }

@@ -31,6 +31,15 @@ switch ($page) {
     case 7:
         include_once('pages/profil.inc.php');
         break;
+    case 8:
+        include_once('pages/jeu2.inc.php');
+        break;
+    case 9:
+        include_once ('include/maj_base.php');
+        break;
+    case 10:
+        include_once ('pages/classement.inc.php');
+        break;
 
     default : include_once('pages/accueil.inc.php');
 }

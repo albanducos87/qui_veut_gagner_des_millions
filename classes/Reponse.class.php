@@ -1,6 +1,6 @@
 <?php
 
-class Reponses {
+class Reponse {
     private $idReponse, $idQuestion, $fake1, $fake2, $fake3, $reponse;
 
     public function affecte($donnees) {

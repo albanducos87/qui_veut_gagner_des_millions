@@ -2,15 +2,15 @@
 
 class QuestionReponse {
     public $question;
-    public $fake1; 
+    public $fake1;
     public $fake2;
-    public $fake3; 
+    public $fake3;
     public $reponse;
 
     public function __construct($valeurs = array()){
         if (!empty($valeurs))
-          $this->affecte($valeurs);
-      }
+            $this->affecte($valeurs);
+    }
 
     public function affecte($donnees) {
         foreach ($donnees as $attribut => $valeur) {

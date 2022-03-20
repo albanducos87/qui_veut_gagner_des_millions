@@ -30,6 +30,23 @@ class PartieManager {
             return $partieActu;
     }
 
+    public function majPartieUtilisateur($palier, $idPartie) {
+        $req = $this->db->prepare("UPDATE partie SET palier = :palier WHERE idPartie = :idPartie");
+        $req->bindValue(':palier', $palier);
+        $req->bindValue(':idPartie', $idPartie);
+        return $req->execute();
+    }
+
+    public function getClassement() {
+        $req = $this->db->prepare("SELECT p.idUtilisateur, prix, nom, prenom FROM partie p 
+                                    INNER JOIN utilisateur u ON u.idUtilisateur = p.idUtilisateur
+                                    INNER JOIN niveau n ON n.idNiveau = p.palier
+                                    ORDER BY palier DESC LIMIT 10");
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 }
 
 ?>

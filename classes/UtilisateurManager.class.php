@@ -48,8 +48,29 @@ class UtilisateurManager {
     }
 
     public function getInformationsUser($idUtilisateur) {
-        $req = $this->db->prepare("SELECT * FROM utilisateur WHERE idUtilisateur = :idUtilisateur");
+        $req = $this->db->prepare("SELECT mail, nom, prenom, COUNT(idPartie) AS nbParties FROM utilisateur u 
+                                   INNER JOIN partie p ON p.idUtilisateur = u.idUtilisateur
+                                   WHERE p.idUtilisateur = :idUtilisateur");
         $req->bindValue(':idUtilisateur', $idUtilisateur);
+        $req->execute();
+
+        while ($utilisateur = $req->fetch(PDO::FETCH_OBJ)) {
+            $util['mail'] = $utilisateur->mail;
+            $util['nom'] = $utilisateur->nom;
+            $util['prenom'] = $utilisateur->prenom;
+            $util['nbParties'] = $utilisateur->nbParties;
+        }
+
+        if (isset($util))
+            return $util;
+    }
+
+    public function modifierProfil($id, $nom, $prenom, $mail) {
+        $req = $this->db->prepare("UPDATE utilisateur SET nom = :nom, prenom = :prenom, mail = :mail WHERE idUtilisateur = :id");
+        $req->bindValue(':nom', $nom);
+        $req->bindValue(':prenom', $prenom);
+        $req->bindValue(':mail', $mail);
+        $req->bindValue(':id', $id);
         return $req->execute();
     }
 }

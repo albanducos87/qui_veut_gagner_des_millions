@@ -7,11 +7,14 @@ class NiveauManager {
         $this->db = $db;
     }
 
-    public function getAllNiveaux() {
-        $req = $this->db->prepare("SELECT * FROM niveau ORDER BY idNiveau DESC");
-        $req->execute();
+    function getAllNiveaux()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM niveau ORDER BY idNiveau DESC");
 
-        return $req;
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+
     }
 
 }
