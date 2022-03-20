@@ -1,7 +1,7 @@
 <?php
 
 class UtilisateurManager {
-    private $dbo;
+    private $db;
 
     public function __construct($db){
         $this->db = $db;
@@ -9,12 +9,12 @@ class UtilisateurManager {
 
     public function inscription($nom, $prenom, $mail, $pwd){
         $req = $this->db->prepare("INSERT INTO utilisateur(nom, prenom, mail, mdp) VALUES (:nom, :prenom, :mail, :mdp)");
-        $req->bindValue(':nom', $nom);
-        $req->bindValue(':prenom', $prenom);
-        $req->bindValue(':mail', $mail);
-        $req->bindValue(':mdp', $pwd);
+        $req->bindParam(':nom', $nom);
+        $req->bindParam(':prenom', $prenom);
+        $req->bindParam(':mail', $mail);
+        $req->bindParam(':mdp', $pwd);
 
-        return $req->execute();
+        return$req->execute();
     }
 
     public function isMailOk($mail) {
@@ -35,7 +35,7 @@ class UtilisateurManager {
         $tabUtilisateurs = array();
         $req = $this->db->prepare("SELECT idUtilisateur FROM utilisateur WHERE mail = :mail AND mdp = :mdp");
         $req->bindValue(':mail', $mail);
-        $req->bindValue(':mdp', $mdp);
+        $req->bindValue(':mdp', hash('sha256', $mdp));
         $req->execute();
 
         while ($utilisateur = $req->fetch(PDO::FETCH_OBJ)) {
