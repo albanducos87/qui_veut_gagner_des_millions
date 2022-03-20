@@ -40,6 +40,9 @@ switch ($page) {
     case 10:
         include_once ('pages/classement.inc.php');
         break;
+    case 11:
+        include_once ('pages/deconnexion.inc.php');
+        break;
 
     default : include_once('pages/accueil.inc.php');
 }

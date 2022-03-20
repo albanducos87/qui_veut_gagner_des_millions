@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteRule ^accueil$ index.php?page=0
+RewriteRule ^jeu$ index.php?page=8
+RewriteRule ^inscription$ index.php?page=3
+RewriteRule ^connexion$ index.php?page=4
+RewriteRule ^admin$ index.php?page=5
+RewriteRule ^home$ index.php?page=6
+RewriteRule ^profil$ index.php?page=7
+RewriteRule ^classement$ index.php?page=10
+RewriteRule ^deconnexion$ index.php?page=11

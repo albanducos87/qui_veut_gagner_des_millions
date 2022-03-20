@@ -9,15 +9,15 @@ if (isset($_SESSION['idUtilisateur'])) {
             <p>Qui veut gagner<br />
                 des millions ?<br /></p>
             <ul class="actions special">
-                <li><a href="index.php?page=8" class="button primary">Nouvelle partie</a></li>
-                <li><a href="index.php?page=7" class="button primary">Mon profil</a></li>
-                <li><a href="index.php?page=10" class="button primary">Classement Général</a></li>
+                <li><a href="jeu" class="button primary">Nouvelle partie</a></li>
+                <li><a href="profil" class="button primary">Mon profil</a></li>
+                <li><a href="classement" class="button primary">Classement Général</a></li>
             </ul>
         </div>
     </section>
 </div>
 <?php
 } else {
-    header('Location: index.php?page=0');
+    header('Location: accueil');
 }
 ?>

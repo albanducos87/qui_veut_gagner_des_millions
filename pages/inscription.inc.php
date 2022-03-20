@@ -56,7 +56,7 @@ if (empty($_POST["mail"])) {
     if ($errorMail == 1) {
         echo '<script type="text/javascript">console.log("non");</script>';
     } else {
-        header("Location: index.php?page=1");
+        header("Location: connexion");
         exit();
     }
 }

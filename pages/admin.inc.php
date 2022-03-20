@@ -32,7 +32,7 @@ if ($_FILES['fichier']) {
 <!-- Tab content -->
 <div id="ajouter" class="tabcontent">
 
-    <form method="post" enctype="multipart/form-data" action="index.php?page=5">
+    <form method="post" enctype="multipart/form-data" action="admin">
         <label for="fichier">Entrez un csv</label>
         <input type="file" name="fichier" id="fichier" accept=".csv" required>
         <input type="submit" value="Valider">

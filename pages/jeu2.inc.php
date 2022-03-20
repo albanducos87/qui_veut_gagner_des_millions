@@ -54,11 +54,11 @@ if (isset($_SESSION['idUtilisateur'])) {
         $i--;
     }
 } else {
-    header('Location: index.php?page=0');
+    header('Location: accueil');
 }
     ?>
 </div>
 
 <div id="retour">
-    <a href="index.php?page=6" class="button primary"> Accueil </a>
+    <a href="home" class="button primary"> Accueil </a>
 </div>

@@ -23,7 +23,9 @@ if (isset($_SESSION['idUtilisateur'])) {
     <?php
     }
 } else {
-    header('Location: index.php?page=0');
+    header('Location: accueil');
 }
     ?>
 </table>
+<br>
+<a href="home" class="button primary">Retour accueil</a>

@@ -21,7 +21,6 @@ session_start();
       rel="stylesheet">
 </head>
 <body class="landing is-preload">
-
 <?php
 require_once ('components/main.php');
 ?>

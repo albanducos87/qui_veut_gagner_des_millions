@@ -10,6 +10,13 @@ if (isset($_SESSION['idUtilisateur'])) {
     <button class="tablinks tabProfil" onclick="openCity(event, 'voirProfil')" id="defaultOpen">Mon profil</button>
     <button class="tablinks tabModif" onclick="openCity(event, 'modifierProfil')">Modifier mon profil</button>
 </div>
+<div id="logout">
+    <a href="deconnexion">
+        <button class="material-icons" name="logout">
+            logout
+        </button>
+    </a>
+</div>
 <br>
 <div id="voirProfil" class="tabcontent">
     <h2 align="center">Mon profil</h2>
@@ -30,12 +37,12 @@ if (isset($_SESSION['idUtilisateur'])) {
             <label for="mail" class="placeholder">Mail</label>
         </div>
     </div>
-    <p align="center"><a href="index.php?page=6" class="button primary">Retour accueil</a></p>
+    <p align="center"><a href="home" class="button primary">Retour accueil</a></p>
 </div>
 
 <div id="modifierProfil" class="tabcontent">
     <h2 align="center">Modifier mon profil</h2>
-    <form action="index.php?page=7" method="post">
+    <form action="profil" method="post">
         <div class="form">
             <div class="input-container mail">
                 <input id="nom" class="input" type="text" name="nom" value="<?php echo $profilEnCours['nom'] ?>" required/>
@@ -55,17 +62,17 @@ if (isset($_SESSION['idUtilisateur'])) {
             <input type="submit" class="submit" name="submit" value="Modifier"/>
         </div>
     </form>
-    <p align="center"><a href="index.php?page=6" class="button primary">Retour accueil</a></p>
+    <p align="center"><a href="home" class="button primary">Retour accueil</a></p>
 </div>
 
 <?php
     if (isset($_POST['submit']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mail'])) {
         $utilisateurManager->modifierProfil($_SESSION['idUtilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail']);
-        header("refresh: url=index.php?page=7");
-        header("refresh: url=index.php?page=7");
+        header("refresh: url=profil");
+        header("refresh: url=profil");
     }
 } else {
-    header('Location: index.php?page=0');
+    header('Location: accueil');
 }
 ?>
 <script>
