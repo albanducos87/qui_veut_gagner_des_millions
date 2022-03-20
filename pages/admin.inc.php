@@ -1,6 +1,25 @@
 <?php
 $pdo = new Mypdo();
-$questionManager = new QuestionManager($pdo)
+$questionManager = new QuestionManager($pdo);
+
+$fileInserted = false;
+
+if ($_FILES['fichier']) {
+    $row = $questionManager->countQuestions();
+    settype($row, "integer");
+    if (($handle = fopen($_FILES["fichier"]["tmp_name"], "r")) !== FALSE) {
+        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            $row++;
+            $idNiveau = $data[1];
+            settype($idNiveau, "integer");
+            $questionManager->insertQuestion($row, $data[0], $data[1]);
+            $questionManager->insertReponses($row, $data[2], $data[3], $data[4], $data[5]);
+        }
+        fclose($handle);
+        $fileInserted = true;
+    }
+}
+
 ?>
 
 <div class="tab">
@@ -13,7 +32,16 @@ $questionManager = new QuestionManager($pdo)
 <!-- Tab content -->
 <div id="ajouter" class="tabcontent">
 
-    <!-- Ajouter le csv -->
+    <form method="post" enctype="multipart/form-data" action="index.php?page=5">
+        <label for="fichier">Entrez un csv</label>
+        <input type="file" name="fichier" id="fichier" accept=".csv" required>
+        <input type="submit" value="Valider">
+    </form>
+
+    <?php if ($fileInserted) { ?>
+        <small style="color: red;">Le fichier à bien été inséré</small>
+    <?php } ?>
+
 
 
 </div>
@@ -23,31 +51,30 @@ $questionManager = new QuestionManager($pdo)
     <!-- Faire la modification -->
 
     <?php
-        $questions = $questionManager->getAllQuestionsAvecReponse();
+    $questions = $questionManager->getAllQuestionsAvecReponse();
     ?>
 
     <table>
         <thead>
-            <th>Questions</th>
-            <th>Reponse</th>
-            <th>Fake 1</th>
-            <th>Fake 2</th>
-            <th>Fake 3</th>
+            <tr>
+                <th>Question</th>
+                <th>Reponse</th>
+                <th>Fake 1</th>
+                <th>Fake 2</th>
+                <th>Fake 3</th>
+            </tr>
         </thead>
         <tbody>
-            
-            <?php 
-                echo $questions;
-                foreach($questions as $question) { ?>
-            <tr>
-                
-                <td><?php echo $question["question"]; ?></td>
-                <td><?php echo $question["reponse"]; ?></td>
-                <td><?php echo $question["fake1"]; ?></td>
-                <td><?php echo $question["fake2"]; ?></td>
-                <td><?php echo $question["fake3"]; ?></td>
-            </tr>
-            <?php } ?>
+            <?php foreach ($questions as $question) { ?>
+                <tr>
+                    <td><?php echo $question->question; ?></td>
+                    <td><?php echo $question->reponse; ?></td>
+                    <td><?php echo $question->fake1; ?></td>
+                    <td><?php echo $question->fake2; ?></td>
+                    <td><?php echo $question->fake3; ?></td>
+                </tr>
+            <?php }; ?>
+
         </tbody>
     </table>
 

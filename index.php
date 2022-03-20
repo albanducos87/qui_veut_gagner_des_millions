@@ -10,9 +10,9 @@ session_start();
 <head>
     <title>QVGDM</title>
     <meta charset="utf-8" />
+    <noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/admin.css" />
-    <noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
     <link rel="preload" href="./scene.json" as="fetch">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
