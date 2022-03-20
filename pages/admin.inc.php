@@ -62,6 +62,7 @@ if ($_FILES['fichier']) {
             <th>Fake 1</th>
             <th>Fake 2</th>
             <th>Fake 3</th>
+            <th>Niveau</th>
         </tr>
         </thead>
         <tbody>
@@ -72,6 +73,9 @@ if ($_FILES['fichier']) {
                 <td><?php echo $question->fake1; ?></td>
                 <td><?php echo $question->fake2; ?></td>
                 <td><?php echo $question->fake3; ?></td>
+                <td><?php echo $question->niveau; ?></td>
+                
+                <td><button onclick="modifier(<?php echo $question->id; ?> )">Modifier</button></td>
             </tr>
         <?php }; ?>
 
@@ -85,7 +89,48 @@ if ($_FILES['fichier']) {
 
     <!-- Faire la suppression -->
 
+    <?php
+    $questions = $questionManager->getAllQuestionsAvecReponse();
+    ?>
+
+    <table class="table-dark table-stripped">
+        <thead>
+        <tr>
+            <th>Question</th>
+            <th>Reponse</th>
+            <th>Fake 1</th>
+            <th>Fake 2</th>
+            <th>Fake 3</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($questions as $question) { ?>
+            <tr>
+                <td><?php echo $question->question; ?></td>
+                <td><?php echo $question->reponse; ?></td>
+                <td><?php echo $question->fake1; ?></td>
+                <td><?php echo $question->fake2; ?></td>
+                <td><?php echo $question->fake3; ?></td>
+                
+                <td><button onclick="supprimer(<?php echo $question->id; ?> )">Supprimer</button></td>
+            </tr>
+        <?php }; ?>
+
+        </tbody>
+    </table>
+
 </div>
+
+<script>
+
+    function modifier(id) {
+        window.location.href = 'index.php?page=12&rowToUpdate=' + id
+    }
+
+    function supprimer(id) {
+        alert(id)
+    }
+</script>
 
 
 

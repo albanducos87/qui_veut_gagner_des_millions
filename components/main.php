@@ -43,6 +43,9 @@ switch ($page) {
     case 11:
         include_once ('pages/deconnexion.inc.php');
         break;
+    case 12:
+        include_once ('pages/modifier.inc.php');
+        break;
 
     default : include_once('pages/accueil.inc.php');
 }

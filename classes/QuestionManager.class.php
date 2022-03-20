@@ -11,7 +11,6 @@ class QuestionManager {
         $liste = array();
         $req = $this->db->prepare("SELECT * FROM question q JOIN reponses r on q.idQuestion = r.idQuestion");
         $req->execute();
-        return $req->fetch();
         while ($res = $req->fetch(PDO::FETCH_OBJ)) {
             $liste[] = new QuestionReponse($res);
         }
@@ -56,6 +55,20 @@ class QuestionManager {
             return $questionEnCours;
     }
 
+    public function getQuestion($id) {
+        $req = $this->db->prepare("SELECT * FROM question q JOIN reponses r on q.idQuestion = r.idQuestion where q.idQuestion = :idQuestion");
+        $req->bindValue(':idQuestion', $id);
+        $req->execute();
+
+        while ($question = $req->fetch(PDO::FETCH_OBJ)) {
+            $questionEnCours = new QuestionReponse($question);
+        }
+
+        if (isset($questionEnCours))
+            return $questionEnCours;
+    }
+
+
     public function getQuestionsReponses()
     {
         $stmt = $this->db->prepare("SELECT q.idQuestion, question, fake1, fake2, fake3, reponse, idReponse FROM question q INNER JOIN reponses r ON r.idQuestion = q.idQuestion");
@@ -63,7 +76,23 @@ class QuestionManager {
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
+    }
 
+    public function update($id, $question, $fake1, $fake2, $fake3, $reponse, $niveau) {
+        $questionUpdate = $this->db->prepare("UPDATE question SET question = :question, idNiveau = :niveau where idQuestion = :idQuestion");
+        $questionUpdate->bindParam(':idQuestion', $id, PDO::PARAM_INT);
+        $questionUpdate->bindParam(':question', $question, PDO::PARAM_STR);
+        $questionUpdate->bindParam(':idNiveau', $niveau, PDO::PARAM_INT);
+        $questionUpdate->execute();
+
+
+        $reponseUpdate = $this->db->prepare("UPDATE reponses SET fake1 = :fake1, fake2 = :fake2, fake3 = :fake3, reponse = :reponse  where idQuestion = :idQuestion");
+        $reponseUpdate->bindParam(':fake1', $fake1, PDO::PARAM_STR);
+        $reponseUpdate->bindParam(':fake2', $fake2, PDO::PARAM_STR) ;
+        $reponseUpdate->bindParam(':fake3', $fake3, PDO::PARAM_STR);
+        $reponseUpdate->bindParam(':question', $question, PDO::PARAM_STR);
+        $reponseUpdate->bindParam(':idQuestion', $id, PDO::PARAM_INT);
+        $reponseUpdate->execute();
     }
 
     public function generateXml() {

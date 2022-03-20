@@ -1,6 +1,6 @@
 <?php
 define('ENV', true);
-require_once("include/autoLoad.inc.php");
+require_once "include/autoLoad.inc.php";
 session_start();
 ?>
 
@@ -10,6 +10,7 @@ session_start();
 <head>
     <title>QVGDM</title>
     <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/admin.css" />
     <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
@@ -19,10 +20,11 @@ session_start();
     <link rel="preload" href="./scene.json" as="fetch">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+
 </head>
 <body class="landing is-preload">
 <?php
-require_once ('components/main.php');
+require_once 'components/main.php';
 ?>
 
 <script src="js/jquery.min.js"></script>
