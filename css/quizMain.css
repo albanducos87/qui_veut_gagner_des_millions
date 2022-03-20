@@ -1,32 +1,57 @@
 #ranking {
     display: inline-block;
     color: #E8BA25;
-    border-left-style: solid;
-    border-color: white;
     font-size: 25px;
-    background: linear-gradient(to right, #243797, #152261);
     padding: 20px;
     font-weight: bold;
     width: 25%;
-    float: right
+    height: 100vh;
 }
 
 #retour {
     padding-right: 70px;
     margin-top: -100px;
     font-weight: bold;
-    float: right
+    align-self: flex-end;
 }
 
 #logo {
-    width: 300px;
-    margin-left: calc(50% - 150px)
+    position: absolute;
+    top: 10px;
+    left: 100px;
+    width: 50px;
+    height: 50px;
+}
+
+#logoimg {
+    position: absolute;
+    width: 100px;
+    height: 100px;
 }
 
 .joker {
     background: radial-gradient(#1e9785, #243797);
     border-radius: 10px;
     padding: 7px;
+}
+
+#jeu {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(to right, #243797, #152261);
+    border-left-style: solid;
+    border-color: white;
 }
 
 #main {
@@ -53,6 +78,11 @@
     border-style: solid;
     border-width: 2px;
     white-space: pre-line;
+}
+
+.rank {
+    width: 300px;
+    padding: 4px;
 }
 
 .right {
@@ -83,4 +113,10 @@
 
 .goldenLetter {
     color: #E8BA25;
+}
+
+#canvas3d {
+    position: absolute;
+    z-index: -1;
+    transform: translate(-15%, -20%) scale(0.7);
 }

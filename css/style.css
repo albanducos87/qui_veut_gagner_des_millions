@@ -2,7 +2,9 @@ html {
     box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
 
@@ -10,9 +12,10 @@ body {
     background: black;
 }
 
-
-
-body, input, select, textarea {
+body,
+input,
+select,
+textarea {
     color: #fff;
     font-family: "Open Sans", Helvetica, sans-serif;
     font-size: 15pt;
@@ -20,7 +23,6 @@ body, input, select, textarea {
     letter-spacing: 0.075em;
     line-height: 1.65em;
 }
-
 
 a {
     -moz-transition: color 0.2s ease, border-bottom-color 0.2s ease;
@@ -36,12 +38,14 @@ a:hover {
     border-bottom-color: transparent;
 }
 
-strong, b {
+strong,
+b {
     color: #fff;
     font-weight: 600;
 }
 
-em, i {
+em,
+i {
     font-style: italic;
 }
 
@@ -49,7 +53,12 @@ p {
     margin: 0 0 2em 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: #fff;
     font-weight: 800;
     letter-spacing: 0.225em;
@@ -58,7 +67,12 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
     color: inherit;
     text-decoration: none;
 }
@@ -68,14 +82,10 @@ h2 {
     line-height: 1.75em;
 }
 
-
-
 h3 {
     font-size: 1.15em;
     line-height: 1.75em;
 }
-
-
 
 h4 {
     font-size: 1em;
@@ -121,8 +131,6 @@ blockquote {
     padding: 0.5em 0 0.5em 2em;
 }
 
-
-
 pre {
     -webkit-overflow-scrolling: touch;
     font-family: "Courier New", monospace;
@@ -148,7 +156,6 @@ pre code {
 .align-right {
     text-align: right;
 }
-
 
 #banner {
     display: -moz-flex;
@@ -188,7 +195,8 @@ pre code {
     z-index: 1;
 }
 
-#banner h2:before, #banner h2:after {
+#banner h2:before,
+#banner h2:after {
     -moz-transition: width 0.85s ease;
     -webkit-transition: width 0.85s ease;
     -ms-transition: width 0.85s ease;
@@ -224,8 +232,6 @@ pre code {
     color: inherit;
 }
 
-
-
 #banner:after {
     pointer-events: none;
     -moz-transition: opacity 3s ease-in-out;
@@ -255,7 +261,8 @@ body.is-preload #banner h2 {
     opacity: 0;
 }
 
-body.is-preload #banner h2:before, body.is-preload #banner h2:after {
+body.is-preload #banner h2:before,
+body.is-preload #banner h2:after {
     width: 0;
 }
 
@@ -271,6 +278,7 @@ body.is-preload #banner:after {
     opacity: 1;
 }
 
+
 /* CTA */
 
 #cta .inner {
@@ -281,14 +289,15 @@ body.is-preload #banner:after {
     max-width: 45em;
 }
 
+
 /* Main */
 
-#main > banner {
-    padding: 12em 0 10em 0 ;
-    background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/logo.png");
-    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/logo.png");
-    background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/logo.png");
-    background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/logo.png");
+#main>banner {
+    padding: 12em 0 10em 0;
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/logo.png");
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/logo.png");
+    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/logo.png");
+    background-image: linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/logo.png");
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
@@ -296,26 +305,26 @@ body.is-preload #banner:after {
     text-align: center;
 }
 
-#main > header h2 {
+#main>header h2 {
     font-size: 1.75em;
     margin: 0 0 0.5em 0;
 }
 
-#main > header p {
+#main>header p {
     color: inherit;
     letter-spacing: 0.225em;
     text-transform: uppercase;
     top: 0;
 }
 
-#main > header p a {
+#main>header p a {
     color: inherit;
 }
 
-
-body.is-mobile #main > header {
+body.is-mobile #main>header {
     background-attachment: scroll;
 }
+
 
 /* Footer */
 
@@ -357,6 +366,7 @@ ul.alt li:first-child {
 dl {
     margin: 0 0 2em 0;
 }
+
 
 /* Actions */
 
@@ -421,7 +431,7 @@ ul.actions.fit li {
     width: 100%;
 }
 
-ul.actions.fit li > * {
+ul.actions.fit li>* {
     width: 100%;
 }
 
@@ -430,7 +440,6 @@ ul.actions.fit.stacked {
 }
 
 @media screen and (max-width: 480px) {
-
     ul.actions:not(.fixed) {
         -moz-flex-direction: column;
         -webkit-flex-direction: column;
@@ -439,7 +448,6 @@ ul.actions.fit.stacked {
         margin-left: 0;
         width: 100% !important;
     }
-
     ul.actions:not(.fixed) li {
         -moz-flex-grow: 1;
         -webkit-flex-grow: 1;
@@ -453,15 +461,12 @@ ul.actions.fit.stacked {
         text-align: center;
         width: 100%;
     }
-
-    ul.actions:not(.fixed) li > * {
+    ul.actions:not(.fixed) li>* {
         width: 100%;
     }
-
     ul.actions:not(.fixed) li:first-child {
         padding-top: 0;
     }
-
     ul.actions:not(.fixed) li input[type="submit"],
     ul.actions:not(.fixed) li input[type="reset"],
     ul.actions:not(.fixed) li input[type="button"],
@@ -469,7 +474,6 @@ ul.actions.fit.stacked {
     ul.actions:not(.fixed) li .button {
         width: 100%;
     }
-
     ul.actions:not(.fixed) li input[type="submit"].icon:before,
     ul.actions:not(.fixed) li input[type="reset"].icon:before,
     ul.actions:not(.fixed) li input[type="button"].icon:before,
@@ -477,8 +481,8 @@ ul.actions.fit.stacked {
     ul.actions:not(.fixed) li .button.icon:before {
         margin-left: -0.5em;
     }
-
 }
+
 
 /* Button */
 
@@ -609,6 +613,7 @@ button.primary,
     padding: 4px 20px 0;
     width: 100%;
 }
+
 .cut {
     background-color: #15172b;
     border-radius: 10px;
@@ -620,12 +625,13 @@ button.primary,
     transition: transform 200ms;
     width: 76px;
 }
+
 .cut-short {
     width: 50px;
 }
 
-.input:focus ~ .cut,
-.input:not(:placeholder-shown) ~ .cut {
+.input:focus~.cut,
+.input:not(:placeholder-shown)~.cut {
     transform: translateY(8px);
 }
 
@@ -641,16 +647,16 @@ button.primary,
     top: 20px;
 }
 
-.input:focus ~ .placeholder,
-.input:not(:placeholder-shown) ~ .placeholder {
+.input:focus~.placeholder,
+.input:not(:placeholder-shown)~.placeholder {
     transform: translateY(-30px) translateX(10px) scale(0.75);
 }
 
-.input:not(:placeholder-shown) ~ .placeholder {
+.input:not(:placeholder-shown)~.placeholder {
     color: #808097;
 }
 
-.input:focus ~ .placeholder {
+.input:focus~.placeholder {
     color: #dc2f55;
 }
 
@@ -739,4 +745,3 @@ button.primary,
     margin: 8px;
     padding: 6px;
 }
-
