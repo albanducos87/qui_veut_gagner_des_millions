@@ -90,7 +90,7 @@ class QuestionManager {
         $reponseUpdate->bindParam(':fake1', $fake1, PDO::PARAM_STR);
         $reponseUpdate->bindParam(':fake2', $fake2, PDO::PARAM_STR) ;
         $reponseUpdate->bindParam(':fake3', $fake3, PDO::PARAM_STR);
-        $reponseUpdate->bindParam(':question', $question, PDO::PARAM_STR);
+        $reponseUpdate->bindParam(':reponse', $reponse, PDO::PARAM_STR);
         $reponseUpdate->bindParam(':idQuestion', $id, PDO::PARAM_INT);
         $reponseUpdate->execute();
     }
