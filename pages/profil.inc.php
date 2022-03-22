@@ -6,16 +6,10 @@ $profilEnCours = $utilisateurManager->getInformationsUser($_SESSION['idUtilisate
 
 if (isset($_SESSION['idUtilisateur'])) {
 ?>
+<p align="right"><a href="home" onclick="window.alert('Voulez-vous vous déconnecter ?')"><i class="fa fa-sign-out"></i></a></p>
 <div class="tab">
     <button class="tablinks tabProfil" onclick="openCity(event, 'voirProfil')" id="defaultOpen">Mon profil</button>
     <button class="tablinks tabModif" onclick="openCity(event, 'modifierProfil')">Modifier mon profil</button>
-</div>
-<div id="logout">
-    <a href="deconnexion">
-        <button class="material-icons" name="logout">
-            logout
-        </button>
-    </a>
 </div>
 <br>
 <div id="voirProfil" class="tabcontent">

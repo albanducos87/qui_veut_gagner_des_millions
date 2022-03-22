@@ -343,7 +343,10 @@ function Game() {
                 });
             } else {
                 medallion.win(function() {
+                    window.alert("Félicitations, vous avez remporter le gros lot !");
+                    location.href("home");
                     questionBoard.clear();
+
                 });
             }
         } else {

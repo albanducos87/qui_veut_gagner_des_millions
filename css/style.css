@@ -771,6 +771,7 @@ button.primary,
     background-color: navy;
     margin: 4px;
     cursor: pointer;
+    font-size: 25px;
 }
 
 #valider {
@@ -779,11 +780,10 @@ button.primary,
 
 #question {
     display: block;
-    width: 100%;
+    width: 90%;
     text-align: center;
     border: 1px solid coral;
     border-radius: 10px;
     background-color: navy;
-    margin: 8px;
-    padding: 6px;
+    font-size: 25px;
 }

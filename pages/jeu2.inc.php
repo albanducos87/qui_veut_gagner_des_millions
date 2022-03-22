@@ -1,23 +1,26 @@
 <?php
+if (isset($_SESSION['idUtilisateur'])) {
 $pdo = new Mypdo();
 $partieManager = new PartieManager($pdo);
 $niveauManager = new NiveauManager($pdo);
 $questionManager = new QuestionManager($pdo);
-if ($_SESSION['enCours'] != 1) {
-    $partieEnCours = $partieManager->initPartie($_SESSION['idUtilisateur']);
-    $_SESSION['enCours'] = 1;
-}
+$partieEnCours = $partieManager->initPartie($_SESSION['idUtilisateur']);
+$_SESSION['enCours'] = 1;
+
 
 $niveaux = $niveauManager->getAllNiveaux();
 $questionManager->generateXml();
 
-if (isset($_SESSION['idUtilisateur'])) {
+
 ?>
 <canvas id="canvas3d" width=“800” height=“600” frameborder=“0” style="border:0;"></canvas>
 
 <div id="jeu">
     <div id="main">
-    <div id="logo"><img id="logoimg" src="images/logo2.png" /></div>
+        <p align="right"><a href="home" onclick="window.alert('Etes-vous sûr(e) de vouloir quitter le jeu ? Vos données seront perdues')"><i class="fa fa-sign-out"></i></a></p>
+    <div id="logo">
+        <img id="logoimg" src="images/logo2.png" />
+    </div>
         <div id="qanda">
             <div id="question" class="element"></div>
             <table id="table">
@@ -60,10 +63,9 @@ if (isset($_SESSION['idUtilisateur'])) {
         }
             ?>
         </div>
-        
-        <div id="retour">
-            <a href="index.php?page=6" class="button primary"> Accueil </a>
-        </div>
+        <br>
+        <br>
+        <br>
     </div> 
 </div>
 

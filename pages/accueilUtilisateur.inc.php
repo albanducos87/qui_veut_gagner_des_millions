@@ -12,6 +12,7 @@ if (isset($_SESSION['idUtilisateur'])) {
                 <li><a href="jeu" class="button primary">Nouvelle partie</a></li>
                 <li><a href="profil" class="button primary">Mon profil</a></li>
                 <li><a href="classement" class="button primary">Classement Général</a></li>
+                <li><a href="deconnexion" class="button primary">Déconnexion</a> </li>
             </ul>
         </div>
     </section>
