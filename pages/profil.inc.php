@@ -42,7 +42,7 @@ if (isset($_SESSION['idUtilisateur'])) {
 
 <div id="modifierProfil" class="tabcontent">
     <h2 align="center">Modifier mon profil</h2>
-    <form action="profil" method="post">
+    <form action="profil" method="post" onsubmit="traiterClicB1(<?php echo $_SESSION['idUtilisateur'] ?>,<?php echo $_POST['nom'] ?>, <?php echo $_POST['prenom'] ?>, <?php echo $_POST['mail'] ?>)">
         <div class="form">
             <div class="input-container mail">
                 <input id="nom" class="input" type="text" name="nom" value="<?php echo $profilEnCours['nom'] ?>" required/>
@@ -66,16 +66,16 @@ if (isset($_SESSION['idUtilisateur'])) {
 </div>
 
 <?php
-    if (isset($_POST['submit']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mail'])) {
-        $utilisateurManager->modifierProfil($_SESSION['idUtilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail']);
-        header("refresh: url=profil");
-        header("refresh: url=profil");
-    }
+
 } else {
     header('Location: accueil');
 }
 ?>
 <script>
+
+    function traiterClicB1(idUtilisateur, nom, prenom, mail) {
+        $.get("index.php?page=13", {idUtilisateur: idUtilisateur, nom: nom, prenom: prenom, mail: mail}, console.log("profil modifié"));
+    }
 
     document.getElementById("defaultOpen").click();
 
