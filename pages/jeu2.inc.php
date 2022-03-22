@@ -17,7 +17,6 @@ $questionManager->generateXml();
 
 <div id="jeu">
     <div id="main">
-        <p align="right"><a href="home" onclick="window.alert('Etes-vous sûr(e) de vouloir quitter le jeu ? Vos données seront perdues')"><i class="fa fa-sign-out"></i></a></p>
     <div id="logo">
         <img id="logoimg" src="images/logo2.png" />
     </div>

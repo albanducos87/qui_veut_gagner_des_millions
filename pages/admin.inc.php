@@ -1,21 +1,22 @@
 <?php
-    if (!isset($_SESSION['admin'])) {
-        echo 
-        '<script type="text/javascript">
-        let valeur = prompt("Mot de passe admin")
-        if (valeur !== "admin123") { 
-            window.location.href = "./accueil"
-        } else { 
-            $.get("index.php?page=14", {admin: true}, () => {})
-        }
-        </script>';
-    }
+if (!isset($_SESSION['admin'])) {
+    echo
+    '<script type="text/javascript">
+         let valeur = prompt("Mot de passe admin")
+         if (valeur !== "admin123") { 
+             window.location.href = "./accueil"
+         } else { 
+             $.get("index.php?page=14", {admin: true}, () => {})
+         }
+         </script>';
+}
 ?>
 
 
 <?php
 $pdo = new Mypdo();
 $questionManager = new QuestionManager($pdo);
+
 $fileInserted = false;
 
 if ($_FILES['fichier'] && (!isset($_SESSION['isFileImported']) || (($_FILES['fichier']["name"] != $_SESSION['isFileImported'])))) {
@@ -33,11 +34,11 @@ if ($_FILES['fichier'] && (!isset($_SESSION['isFileImported']) || (($_FILES['fic
         $fileInserted = true;
     }
     $_SESSION['isFileImported'] = $_FILES["fichier"]["name"];
-} 
+}
 
 ?>
 
-<div class="tab">
+<div class="">
     <button class="tablinks" onclick="openCity(event, 'ajouter')" id="defaultOpen">Ajouter</button>
     <button class="tablinks" onclick="openCity(event, 'modifier')">Modifier</button>
     <button class="tablinks" onclick="openCity(event, 'supprimer')">Supprimer</button>
@@ -69,7 +70,7 @@ if ($_FILES['fichier'] && (!isset($_SESSION['isFileImported']) || (($_FILES['fic
     $questions = $questionManager->getAllQuestionsAvecReponse();
     ?>
 
-    <table class="">
+    <table>
         <thead>
         <tr>
             <th>Question</th>
@@ -139,17 +140,18 @@ if ($_FILES['fichier'] && (!isset($_SESSION['isFileImported']) || (($_FILES['fic
 </div>
 
 <script>
+
     function modifier(id) {
         window.location.href = 'index.php?page=12&rowToUpdate=' + id
     }
-    
+
     function supprimer(id) {
+        alert(id)
         $.get('index.php?page=13', {id: id}, () => {
             alert("Question avec l\'id " + id + " à été supprimé ")
             location.reload();
         })
     }
-
 </script>
 
 

@@ -176,11 +176,19 @@ function QuestionBoard(ocl) {
     this.newestQuestion;
 
     this.setQuestion = function(question) {
-        this.newestQuestion = question;
-        questionElement.innerHTML = this.newestQuestion.name;
         for (i = 0; i < 4; i++) {
-            ansElement[i].innerHTML = this.newestQuestion.getAnswers()[i];
+            ansElement[i].innerHTML = '';
         }
+        this.newestQuestion = question;
+        document.dispatchEvent(new KeyboardEvent("keydown",{key:"p"}));
+        questionElement.innerHTML = this.newestQuestion.name;
+        setTimeout(()=>{
+            document.dispatchEvent(new KeyboardEvent("keydown",{key:"j"}));
+            for (i = 0; i < 4; i++) {
+                ansElement[i].innerHTML = this.newestQuestion.getAnswers()[i];
+            }
+        },4000);
+
     }
     this.right = function(pos) {
         ansDiv[pos].classList.remove("wrong");
@@ -344,7 +352,7 @@ function Game() {
             } else {
                 medallion.win(function() {
                     window.alert("Félicitations, vous avez remporter le gros lot !");
-                    location.href("home");
+                    location.href = "home";
                     questionBoard.clear();
 
                 });
@@ -361,7 +369,8 @@ function Game() {
     }
 
     this.startGame = function() {
-        newQuestion();
+        setTimeout(()=>{newQuestion();},3000);
+
     }
     newQuestion = function() {
         for (r = 0; r < questions.length; r++) {

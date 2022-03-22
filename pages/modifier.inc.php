@@ -6,7 +6,6 @@ if (!isset($_SESSION['admin'])) {
 }
 
 
-
 if (!isset($_GET["rowToUpdate"])) {
     header('location:index.php?page=5');
     exit();

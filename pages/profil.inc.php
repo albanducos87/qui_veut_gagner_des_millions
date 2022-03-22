@@ -60,7 +60,10 @@ if (isset($_SESSION['idUtilisateur'])) {
 </div>
 
 <?php
-
+    if (isset($_POST['submit']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mail'])) {
+        $utilisateurManager->modifierProfil($_SESSION['idUtilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail']);
+        echo '<meta http-equiv="Refresh" content="0;url=profil">';
+    }
 } else {
     header('Location: accueil');
 }
