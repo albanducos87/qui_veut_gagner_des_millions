@@ -23,13 +23,13 @@ session_start();
 
 </head>
 <body class="landing is-preload">
-<?php
+  <script src="js/jquery.min.js"></script>
+  <?php
 require_once 'components/main.php';
 ?>
 
-<script src="js/jquery.min.js"></script>
+
 <script src="js/main.js"></script>
 <script src="js/quizMain.js" type="text/javascript"></script>
-
 </body>
 </html>

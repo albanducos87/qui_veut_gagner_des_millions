@@ -1,10 +1,24 @@
 <?php
+    if (!isset($_SESSION['admin'])) {
+        echo 
+        '<script type="text/javascript">
+        let valeur = prompt("Mot de passe admin")
+        if (valeur !== "admin123") { 
+            window.location.href = "./accueil"
+        } else { 
+            $.get("index.php?page=14", {admin: true}, () => {})
+        }
+        </script>';
+    }
+?>
+
+
+<?php
 $pdo = new Mypdo();
 $questionManager = new QuestionManager($pdo);
-
 $fileInserted = false;
 
-if ($_FILES['fichier']) {
+if ($_FILES['fichier'] && (!isset($_SESSION['isFileImported']) || (($_FILES['fichier']["name"] != $_SESSION['isFileImported'])))) {
     $row = $questionManager->countQuestions();
     settype($row, "integer");
     if (($handle = fopen($_FILES["fichier"]["tmp_name"], "r")) !== FALSE) {
@@ -18,7 +32,8 @@ if ($_FILES['fichier']) {
         fclose($handle);
         $fileInserted = true;
     }
-}
+    $_SESSION['isFileImported'] = $_FILES["fichier"]["name"];
+} 
 
 ?>
 
@@ -54,7 +69,7 @@ if ($_FILES['fichier']) {
     $questions = $questionManager->getAllQuestionsAvecReponse();
     ?>
 
-    <table>
+    <table class="">
         <thead>
         <tr>
             <th>Question</th>
@@ -93,7 +108,7 @@ if ($_FILES['fichier']) {
     $questions = $questionManager->getAllQuestionsAvecReponse();
     ?>
 
-    <table class="table-dark table-stripped">
+    <table class="">
         <thead>
         <tr>
             <th>Question</th>
@@ -101,6 +116,7 @@ if ($_FILES['fichier']) {
             <th>Fake 1</th>
             <th>Fake 2</th>
             <th>Fake 3</th>
+            <th>Niveau</th>
         </tr>
         </thead>
         <tbody>
@@ -111,6 +127,7 @@ if ($_FILES['fichier']) {
                 <td><?php echo $question->fake1; ?></td>
                 <td><?php echo $question->fake2; ?></td>
                 <td><?php echo $question->fake3; ?></td>
+                <td><?php echo $question->niveau; ?></td>
                 
                 <td><button onclick="supprimer(<?php echo $question->id; ?> )">Supprimer</button></td>
             </tr>
@@ -122,14 +139,17 @@ if ($_FILES['fichier']) {
 </div>
 
 <script>
-
     function modifier(id) {
         window.location.href = 'index.php?page=12&rowToUpdate=' + id
     }
-
+    
     function supprimer(id) {
-        alert(id)
+        $.get('index.php?page=13', {id: id}, () => {
+            alert("Question avec l\'id " + id + " à été supprimé ")
+            location.reload();
+        })
     }
+
 </script>
 
 

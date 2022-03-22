@@ -19,8 +19,10 @@ class QuestionManager {
     }
 
     public function countQuestions() {
-        $req = $this->db->prepare("SELECT COUNT(*) from question");
-        return $req->execute();
+        $req = $this->db->prepare("SELECT * from question");
+        $req->execute();
+        $res = $req->fetchAll();
+        return $res[count($res) - 1]["idQuestion"];
     }
 
     public function insertQuestion($id, $question, $idNiveau) {
@@ -93,6 +95,15 @@ class QuestionManager {
         $reponseUpdate->bindParam(':reponse', $reponse, PDO::PARAM_STR);
         $reponseUpdate->bindParam(':idQuestion', $id, PDO::PARAM_INT);
         $reponseUpdate->execute();
+    }
+
+    public function supprimerQuestion($id) {
+        $reponseDelete = $this->db->prepare("DELETE FROM `reponses` WHERE `idQuestion` = :idQuestion");
+        $reponseDelete->bindParam(':idQuestion', $id, PDO::PARAM_INT);
+        $reponseDelete->execute();
+        $questionDelete = $this->db->prepare("DELETE FROM `question` WHERE `idQuestion` = :idQuestion");
+        $questionDelete->bindParam(':idQuestion', $id, PDO::PARAM_INT);
+        $questionDelete->execute();
     }
 
     public function generateXml() {

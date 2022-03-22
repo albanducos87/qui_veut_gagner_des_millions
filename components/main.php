@@ -46,6 +46,12 @@ switch ($page) {
     case 12:
         include_once ('pages/modifier.inc.php');
         break;
+    case 13:
+        include_once ('include/supprimer.inc.php');
+        break;
+    case 14:
+        include_once ('include/setAdmin.inc.php');
+        break;
 
     default : include_once('pages/accueil.inc.php');
 }
